@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user) }
-
-  # check if user instance is valid
-  it 'has a valid factory' do
-    expect(user).to be_valid
-  end
+  subject { build(:user) }
 
   # field validation
   describe 'validations' do
+    # validate that te factory is valid
+    it { is_expected.to be_valid }
     # validate_presence_of and validate_uniqueness_of are from soulda-matchers
     # validation spec for name
     it { is_expected.to validate_presence_of(:name) }
