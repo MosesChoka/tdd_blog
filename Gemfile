@@ -53,6 +53,9 @@ end
 # add shoulda matcha gem, this gem provides a collection of Rspec compatible one liners and helpers
 group :test do
   gem "shoulda-matchers"
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
 
 group :development do
