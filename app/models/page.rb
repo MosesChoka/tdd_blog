@@ -2,6 +2,7 @@ class Page < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, uniqueness: true
   validates :content, presence: true
+  scope :published, -> { where(published: true) }
 
   before_validation :make_slug
 

@@ -1,9 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'capybara/rspec'
-Capybara.default_driver = :selenium_firefox # or :selenium_chrome_headless
-Capybara.app_host = 'http://localhost:5000'
-Capybara.default_max_wait_time = 1000 # Increase the wait time (default is 2 seconds)
 
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -78,5 +74,12 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
+  end
+
+  # Configure capybara
+  config.before(:each, type: :system) do
+    driver = :selenium_chrome_headless
+    driver = :selenium_chrome if ENV['SHOW_CHROME']
+    driven_by(driver)
   end
 end

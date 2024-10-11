@@ -7,4 +7,7 @@ FactoryBot.define do
     sequence(:content) { |n| "<p>Page content goes ere #{n}</p>" }
     published { false }
   end
+  trait :published do
+    published { true }
+  end
 end

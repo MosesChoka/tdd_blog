@@ -1,11 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe 'Home' do
+RSpec.describe 'Home', js: true do
+  before do
+    driven_by(:rack_test)
+  end
   it 'renders homepage' do
+    create(:page)
     visit root_path
 
     within 'header' do
-      expect(page).to have_link 'My Blog'
+      expect(page).to have_link('My Blog')
+    end
+
+    articles = find_all('article')
+    expect(articles.size).to eq(1)
+
+    within articles.first do
+      expect(page).to have_css('h2', text: Page.last.title)
     end
   end
 end
