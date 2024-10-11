@@ -21,12 +21,13 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  # spec for published pages
+  # spec to display only published pages
   describe 'scopes' do
     describe '.published' do
       let(:page1) { create(:page, :published) }
       let(:page2) { create(:page)}
 
+      # RSpec lets are lazily evaluated, so we use before block to create both records in our database before our spec runs
       before do
         [page1, page2]
       end
