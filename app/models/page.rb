@@ -3,6 +3,7 @@ class Page < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :content, presence: true
   scope :published, -> { where(published: true) }
+  scope :ordered, -> { order(created_at: :desc) }
 
   before_validation :make_slug
 
