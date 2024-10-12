@@ -25,15 +25,15 @@ RSpec.describe Page, type: :model do
   describe 'scopes' do
     describe '.published' do
       let(:page1) { create(:page, :published) }
-      let(:page2) { create(:page)}
+      let(:page2) { create(:page) }
 
       # RSpec lets are lazily evaluated, so we use before block to create both records in our database before our spec runs
       before do
-        [page1, page2]
+        [ page1, page2 ]
       end
 
       it 'returns only published pages' do
-        expect(Page.published).to eq([page1])
+        expect(Page.published).to eq([ page1 ])
       end
     end
   end
